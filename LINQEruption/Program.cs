@@ -12,7 +12,7 @@
     new Eruption("Aira", 766, "Japan", 1117, "Stratovolcano"),
     new Eruption("Ceboruco", 930, "Mexico", 2280, "Stratovolcano"),
     new Eruption("Etna", 1329, "Italy", 3320, "Stratovolcano"),
-    new Eruption("Bardarbunga", 1477, "Iceland", 2000, "Stratovolcano")
+    new Eruption("Bardarbunga", 1477, "Iceland", 2000, "Stratovolcano")
 };
 // Example Query - Prints all Stratovolcano eruptions
 IEnumerable<Eruption> stratovolcanoEruptions = eruptions.Where(c => c.Type == "Stratovolcano");
@@ -50,7 +50,14 @@ PrintEach(startsWithZ, "Eruptions with volcano's starting with Z");
 int highestElevation = eruptions.Max(eruption => eruption.ElevationInMeters);
 Console.WriteLine("Highest Elevation" + highestElevation);
 
+IEnumerable<Eruption> highestElevationVolcano = eruptions.Where(eruption => eruption.ElevationInMeters == (int)highestElevation);
+PrintEach(highestElevationVolcano, "Volcano with the highest elevation.");
 
+IEnumerable<Eruption> alhpabetical = eruptions.OrderBy(eruption => eruption.Volcano);
+PrintEach(alhpabetical, "All volcanos listed alphabetically.");
+
+IEnumerable<Eruption> alphabeticalBCE = eruptions.Where(eruption => eruption.Year < 1000).OrderBy(eruption=> eruption.Volcano);
+PrintEach(alphabeticalBCE, "All eruptions before 1000 CE in alphabetical order.");
 
 
  
